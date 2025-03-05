@@ -1,0 +1,30 @@
+# Python-specific ignores
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+*.env
+
+# Git-related ignores
+.git
+.gitignore
+
+# Local development files
+*.log
+*.db
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# Docker-specific ignores
+Dockerfile
+.dockerignore
+
+# Miscellaneous
+*.md
+tests/

@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+python-jose[cryptography]
+passlib[bcrypt]
+youtube-transcript-api
+httpx
+python-dotenv
+redis
+pydantic-settings
+psycopg2-binary
+python-multipart
+pytube
+selenium

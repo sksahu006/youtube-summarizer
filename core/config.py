@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     GEMINI_API_KEY: str
     DATABASE_URL: str
-    REDIS_URL: str = "redis://localhost"
+    REDIS_URL: str
     MISTRAL_API_KEY: str
 
     model_config = SettingsConfigDict(env_file=".env")

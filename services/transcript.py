@@ -73,6 +73,7 @@ def get_transcript(video_id: str) -> str:
         logger.error(f"pytube failed for {video_id}: {str(e)}")
 
     # Fallback to selenium
+    driver = None  # Initialize driver outside the try block
     try:
         logger.info(f"Attempting selenium for video ID {video_id}")
         chrome_options = Options()
@@ -98,13 +99,13 @@ def get_transcript(video_id: str) -> str:
         if transcript_elements:
             transcript_text = " ".join([element.text for element in transcript_elements if element.text])
             logger.info(f"Transcript fetched with selenium: {transcript_text[:50]}...")
-            driver.quit()
             return transcript_text
         else:
             logger.warning(f"No captions found with selenium for {video_id}")
-            driver.quit()
     except Exception as e:
         logger.error(f"selenium failed for {video_id}: {str(e)}")
-        driver.quit()
+    finally:
+        if driver:
+            driver.quit()
 
     raise TranscriptNotAvailable(f"Transcript not available for video {video_id} after trying all methods")

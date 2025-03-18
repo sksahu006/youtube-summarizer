@@ -11,4 +11,3 @@ pydantic-settings
 psycopg2-binary
 python-multipart
 pytube
-selenium

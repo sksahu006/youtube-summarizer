@@ -5,6 +5,7 @@ from db.models.user import User
 from core.security import create_access_token, verify_password, get_password_hash
 from api.schemas.auth import UserCreate, UserOut, Token
 from api.dependencies import get_db
+from typing import List
 
 router = APIRouter()
 
@@ -34,3 +35,8 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         )
     access_token = create_access_token(data={"sub": user.username})
     return {"access_token": access_token, "token_type": "bearer"}
+
+@router.get("/auth/users", response_model=List[UserOut])
+def get_users(db: Session = Depends(get_db)):
+    users = db.query(User).all()
+    return users

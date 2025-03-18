@@ -12,3 +12,7 @@ app = FastAPI()
 # Include routers
 app.include_router(auth.router)
 app.include_router(summarize.router)
+
+@app.get("/health")
+def health_check():
+    return {"status": "Server is running"}
